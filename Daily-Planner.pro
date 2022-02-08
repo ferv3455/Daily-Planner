@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    trayicon.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    trayicon.h
 
 FORMS += \
     mainwindow.ui
@@ -27,3 +29,6 @@ CONFIG += embed_translations
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

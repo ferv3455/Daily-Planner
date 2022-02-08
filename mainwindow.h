@@ -12,10 +12,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QApplication *app, QWidget *parent = nullptr);
     ~MainWindow();
+
+    virtual void closeEvent(QCloseEvent *event);
 
 private:
     Ui::MainWindow *ui;
+    QApplication *m_app;
+
+signals:
+    void closed();
 };
 #endif // MAINWINDOW_H

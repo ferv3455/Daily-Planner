@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "trayicon.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -7,7 +8,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setQuitOnLastWindowClosed(false);     // closing controlled by trayicon
 
+    // Load Translator
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages)
@@ -20,7 +23,12 @@ int main(int argc, char *argv[])
         }
     }
 
-    MainWindow w;
-    w.show();
+    // Create window
+//    MainWindow w(&a);
+//    w.show();
+
+    // Create Icon
+    TrayIcon c(&a);
+
     return a.exec();
 }

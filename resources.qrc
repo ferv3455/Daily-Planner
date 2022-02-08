@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/cms.png</file>
+        <file>images/delete.png</file>
+        <file>images/down.png</file>
+        <file>images/left-arrows.png</file>
+        <file>images/negative.png</file>
+        <file>images/plus.png</file>
+        <file>images/right-arrows.png</file>
+        <file>images/up.png</file>
+        <file>images/up-arrow (1).png</file>
+        <file>images/up-arrow (2).png</file>
+        <file>images/up-arrow (3).png</file>
+        <file>images/up-arrow.png</file>
+    </qresource>
+</RCC>

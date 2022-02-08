@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QApplication *app, QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow),
+    m_app(app)
 {
     ui->setupUi(this);
 }
@@ -13,3 +14,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event);
+    emit closed();
+    // Save
+}
