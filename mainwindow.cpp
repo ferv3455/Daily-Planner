@@ -7,6 +7,7 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) :
     m_app(app)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/images/planner.png"));
 }
 
 MainWindow::~MainWindow()

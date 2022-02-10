@@ -12,5 +12,12 @@
         <file>images/up-arrow (2).png</file>
         <file>images/up-arrow (3).png</file>
         <file>images/up-arrow.png</file>
+        <file>images/about.png</file>
+        <file>images/lock.png</file>
+        <file>images/off.png</file>
+        <file>images/on.png</file>
+        <file>images/quit.png</file>
+        <file>images/window.png</file>
+        <file>images/planner.png</file>
     </qresource>
 </RCC>

@@ -7,10 +7,11 @@
 
 int main(int argc, char *argv[])
 {
+    // Initializing an application
     QApplication a(argc, argv);
-    a.setQuitOnLastWindowClosed(false);     // closing controlled by trayicon
+    a.setQuitOnLastWindowClosed(false);     // Exit controlled by trayicon
 
-    // Load Translator
+    // Loading a translator
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages)
@@ -23,12 +24,9 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Create window
-//    MainWindow w(&a);
-//    w.show();
-
-    // Create Icon
+    // Creating a TrayIcon
     TrayIcon c(&a);
+    a.connect(&c, &TrayIcon::programQuitted, &QApplication::quit);  // Exit on quitting the program
 
     return a.exec();
 }
