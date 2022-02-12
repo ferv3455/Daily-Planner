@@ -23,7 +23,7 @@ void Settings::load()
     if (!file.open(QIODevice::ReadOnly))
     {
         // Couldn't open file: use default settings
-        qDebug() << "Couldn't open save file.";
+        qDebug() << "Couldn't load save file.";
         return;
     }
 
@@ -33,7 +33,10 @@ void Settings::load()
     QJsonObject json = loadDoc.object();
 
     // Initializing settings from json object
-    m_shutdown = json["shutdown"].toBool();
+    if (json.contains("shutdown") && json["shutdown"].isBool())
+    {
+        m_shutdown = json["shutdown"].toBool();
+    }
 }
 
 void Settings::save() const

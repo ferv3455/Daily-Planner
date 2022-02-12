@@ -11,12 +11,14 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    schedule.cpp \
     scheduletimer.cpp \
     settings.cpp \
     trayicon.cpp
 
 HEADERS += \
     mainwindow.h \
+    schedule.h \
     scheduletimer.h \
     settings.h \
     trayicon.h

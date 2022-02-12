@@ -2,22 +2,21 @@
 
 #include <QMessageBox>
 
-TrayIcon::TrayIcon(QApplication *app, QObject *parent) :
+TrayIcon::TrayIcon(QObject *parent) :
     QSystemTrayIcon(parent),
-    m_app(app),
-    m_window(nullptr),
-    m_settings(this),
-    m_timer(this)
+    m_window(nullptr)
 {
     // Adding an icon
-    setIcon(QIcon(":/images/plus.png"));
+    setIcon(QIcon(":/images/planner.png"));
     setVisible(true);
 
     // Initializing settings from file
-    m_settings.load();
+    m_settings = new Settings(this);
+    m_settings->load();
 
     // Initializing schedule timer
-
+    m_timer = new ScheduleTimer(m_settings, this);
+    m_timer->loadSchedule();
 
     // Creating the menu
     m_menu = new QMenu;
@@ -40,9 +39,10 @@ TrayIcon::TrayIcon(QApplication *app, QObject *parent) :
     m_options[1].setText(tr("Screen Lock"));
     m_options[1].setIcon(QIcon(":/images/lock.png"));
     connect(&m_options[1], &QAction::triggered, this, &TrayIcon::fullscreen);
+    m_options[1].setEnabled(false);
 
     m_options[2].setText(tr("Auto Shutdown"));
-    m_options[2].setIcon(m_settings.shutdown() ? QIcon(":/images/on.png") : QIcon(":/images/off.png"));
+    m_options[2].setIcon(m_settings->shutdown() ? QIcon(":/images/on.png") : QIcon(":/images/off.png"));
     connect(&m_options[2], &QAction::triggered, this, &TrayIcon::changeShutdown);
 
     m_options[3].setText(tr("About"));
@@ -57,12 +57,15 @@ TrayIcon::TrayIcon(QApplication *app, QObject *parent) :
     setToolTip(tr("Daily Planner"));
 
     // Connect Signals and Slots
+    connect(m_timer, &ScheduleTimer::stateChanged, this, &TrayIcon::changeState);
     connect(this, &TrayIcon::activated, this, &TrayIcon::onActivated);
     connect(this, &TrayIcon::messageClicked, this, &TrayIcon::showMainWindow);
 }
 
 TrayIcon::~TrayIcon()
 {
+    delete m_settings;
+    delete m_timer;
     delete m_menu;
     delete[] m_options;
 
@@ -72,15 +75,43 @@ TrayIcon::~TrayIcon()
     }
 }
 
+void TrayIcon::changeState(ScheduleTimer::state s)
+{
+    if (s == ScheduleTimer::TASK)
+    {
+        showMessage(tr("Task Begins"), tr("Rest is over.\nReturn to work."));
+        setIcon(QIcon(":/images/task.png"));
+        setToolTip(tr("Daily Planner") + "\n" +
+                   tr("Current state: ") + tr("TASK") + "\n" +
+                   tr("End time: ") + m_timer->endTime());
+    }
+    else if (s == ScheduleTimer::REST)
+    {
+        showMessage(tr("Task Ends"), tr("This period is over.\nHave a rest."));
+        setIcon(QIcon(":/images/rest.png"));
+        setToolTip(tr("Daily Planner") + "\n" +
+                   tr("Current state: ") + tr("REST") + "\n" +
+                   tr("End time: ") + m_timer->endTime());
+    }
+    else if (s == ScheduleTimer::OVER)
+    {
+        showMessage(tr("Task Ends"), tr("Today's work is over.\nHave a rest."));
+        setIcon(QIcon(":/images/rest.png"));
+        setToolTip(tr("Daily Planner") + "\n" +
+                   tr("Current state: ") + tr("ALL TASKS OVER") + "\n");
+    }
+}
+
 void TrayIcon::showMainWindow()
 {
     if (m_window == nullptr)
     {
-        m_window = new MainWindow(m_app);
+        m_window = new MainWindow;
         connect(m_window, &MainWindow::closed, this, [ = ]()
         {
             delete m_window;
             m_window = nullptr;
+            m_timer->loadSchedule();
         });
         m_window->show();
         m_window->activateWindow();
@@ -91,15 +122,13 @@ void TrayIcon::showMainWindow()
 void TrayIcon::fullscreen()
 {
     // TODO: REDEFINED
-    static int i = 0;
-    i = 1 - i;
-    setIcon(i ? QIcon(":/images/negative.png") : QIcon(":/images/plus.png"));
+
 }
 
 void TrayIcon::changeShutdown()
 {
-    m_settings.setShutdown(!m_settings.shutdown());
-    m_options[2].setIcon(m_settings.shutdown() ? QIcon(":/images/on.png") : QIcon(":/images/off.png"));
+    m_settings->setShutdown(!m_settings->shutdown());
+    m_options[2].setIcon(m_settings->shutdown() ? QIcon(":/images/on.png") : QIcon(":/images/off.png"));
 }
 
 void TrayIcon::showAbout()
@@ -118,8 +147,23 @@ void TrayIcon::showAbout()
 
 void TrayIcon::quit()
 {
+    // Warning with a messagebox
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("Exit Daily Planner"));
+    msgBox.setWindowIcon(QIcon(":/images/planner.png"));
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText(tr("<strong>Are you sure you want to quit?</strong>"));
+    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+
+    int ret = msgBox.exec();
+    if (ret == QMessageBox::No)
+    {
+        return;
+    }
+
     // Pre-exit savings
-    m_settings.save();
+    m_settings->save();
 
     // Quitting application
     emit programQuitted();

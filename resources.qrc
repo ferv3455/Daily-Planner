@@ -19,5 +19,7 @@
         <file>images/quit.png</file>
         <file>images/window.png</file>
         <file>images/planner.png</file>
+        <file>images/rest.png</file>
+        <file>images/task.png</file>
     </qresource>
 </RCC>

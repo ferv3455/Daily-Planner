@@ -13,17 +13,16 @@ class TrayIcon : public QSystemTrayIcon
 {
     Q_OBJECT
 public:
-    TrayIcon(QApplication *app, QObject *parent = nullptr);
+    explicit TrayIcon(QObject *parent = nullptr);
     ~TrayIcon();
 
 private:
     // Qt window items
-    QApplication *m_app;
     MainWindow *m_window;
 
     // Data
-    Settings m_settings;
-    ScheduleTimer m_timer;
+    Settings *m_settings;
+    ScheduleTimer *m_timer;
 
     // Context Menu
     QMenu *m_menu;
@@ -33,6 +32,9 @@ signals:
     void programQuitted();
 
 public slots:
+    // Inter-widget communication
+    void changeState(ScheduleTimer::state);
+
     // Basic functions
     void showMainWindow();
     void fullscreen();

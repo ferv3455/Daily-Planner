@@ -11,6 +11,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setQuitOnLastWindowClosed(false);     // Exit controlled by trayicon
 
+    // Setting fonts
+//    QApplication::setFont(QFont("Microsoft YaHei", 12));
+
     // Loading a translator
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -25,7 +28,7 @@ int main(int argc, char *argv[])
     }
 
     // Creating a TrayIcon
-    TrayIcon c(&a);
+    TrayIcon c;
     a.connect(&c, &TrayIcon::programQuitted, &QApplication::quit);  // Exit on quitting the program
 
     return a.exec();
