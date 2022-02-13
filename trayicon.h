@@ -33,6 +33,7 @@ signals:
 
 public slots:
     // Inter-widget communication
+    void alarmMessage(const QTime &time);
     void changeState(ScheduleTimer::state);
 
     // Basic functions

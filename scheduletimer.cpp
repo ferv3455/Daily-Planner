@@ -1,5 +1,6 @@
 #include "scheduletimer.h"
 
+#include <calendar.h>
 #include <QDebug>
 
 ScheduleTimer::ScheduleTimer(Settings *settings, QObject *parent) :
@@ -8,6 +9,8 @@ ScheduleTimer::ScheduleTimer(Settings *settings, QObject *parent) :
     m_schedule(this),
     m_endTime(0, 0, 0),
     m_currentTask(0),
+    m_alarms(),
+    m_currentAlarm(-1),
     m_timer(this)
 {
     // Initialize settings
@@ -24,7 +27,20 @@ ScheduleTimer::~ScheduleTimer()
 
 void ScheduleTimer::loadSchedule()
 {
-//    m_calendar.load();
+    Calendar calendar;
+    calendar.load();
+    int id = calendar.indexOf(QDate::currentDate());
+    if (id >= 0)
+    {
+        m_alarms = calendar.record(id).m_alarms;
+        m_currentAlarm = std::lower_bound(m_alarms.begin(), m_alarms.end(),
+                                          QTime::currentTime()) - m_alarms.begin();
+        if (m_currentAlarm >= m_alarms.size())
+        {
+            m_currentAlarm = -1;
+            m_alarms.clear();
+        }
+    }
 
     m_endTime = QTime(0, 0, 0);
     m_currentTask = 0;
@@ -39,7 +55,19 @@ QString ScheduleTimer::endTime()
 void ScheduleTimer::updateTick()
 {
     QTime now = QTime::currentTime();
-    if (now > m_endTime)
+    if (m_currentAlarm >= 0 && now >= m_alarms[m_currentAlarm])
+    {
+        // Alarm clock
+        emit alarmClock(now);
+        m_currentAlarm++;
+        if (m_currentAlarm >= m_alarms.size())
+        {
+            m_currentAlarm = -1;
+            m_alarms.clear();
+        }
+    }
+
+    if (now >= m_endTime)
     {
         // Current task ends
         const QVector<QTime> &beginTime = m_schedule.beginTime();

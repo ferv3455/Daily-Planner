@@ -57,9 +57,9 @@ TrayIcon::TrayIcon(QObject *parent) :
     setToolTip(tr("Daily Planner"));
 
     // Connect Signals and Slots
+    connect(m_timer, &ScheduleTimer::alarmClock, this, &TrayIcon::alarmMessage);
     connect(m_timer, &ScheduleTimer::stateChanged, this, &TrayIcon::changeState);
     connect(this, &TrayIcon::activated, this, &TrayIcon::onActivated);
-    connect(this, &TrayIcon::messageClicked, this, &TrayIcon::showMainWindow);
 }
 
 TrayIcon::~TrayIcon()
@@ -73,6 +73,11 @@ TrayIcon::~TrayIcon()
     {
         delete m_window;
     }
+}
+
+void TrayIcon::alarmMessage(const QTime &time)
+{
+    showMessage(tr("Alarm Clock"), time.toString());
 }
 
 void TrayIcon::changeState(ScheduleTimer::state s)
@@ -113,7 +118,8 @@ void TrayIcon::showMainWindow()
             m_window = nullptr;
             m_timer->loadSchedule();
         });
-        m_window->show();
+//        m_window->show();
+        m_window->showMaximized();
         m_window->activateWindow();
         m_window->setFocus();
     }
@@ -153,7 +159,7 @@ void TrayIcon::quit()
     msgBox.setWindowIcon(QIcon(":/images/planner.png"));
     msgBox.setIcon(QMessageBox::Warning);
     msgBox.setText(tr("<strong>Are you sure you want to quit?</strong>"));
-    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::No);
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
 
     int ret = msgBox.exec();
@@ -171,7 +177,7 @@ void TrayIcon::quit()
 
 void TrayIcon::onActivated(ActivationReason reason)
 {
-    if (reason == Trigger)
+    if (reason == DoubleClick)
     {
         // Left button
         showMainWindow();

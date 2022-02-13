@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include "schedule.h"
+#include "calendar.h"
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QListWidget>
 #include <QCloseEvent>
 
 QT_BEGIN_NAMESPACE
@@ -20,11 +23,23 @@ public:
 
     virtual void closeEvent(QCloseEvent *event);
 
+    void refreshCalendarVisual();
+    void refreshCalendar();
     void refreshSchedule();
 
-private:
-    Ui::MainWindow *ui;
+    void resetRange();
 
+private:
+    // UI-related
+    Ui::MainWindow *ui;
+    QVector<QPushButton *> m_labels;
+    QVector<QListWidget *> m_alarms;
+    QVector<QListWidget *> m_days;
+
+    // Data
+    Calendar m_calendar;
+    QDate m_firstDate;
+    int m_currentDay;
     Schedule m_schedule;
 
 signals:

@@ -33,12 +33,14 @@ private:
     int m_currentTask;
 
     // Calendar alarm related
-
+    QVector<QTime> m_alarms;
+    int m_currentAlarm;
 
     // Time ticking
     QTimer m_timer;
 
 signals:
+    void alarmClock(const QTime &);
     void stateChanged(state);
 
 public slots:
