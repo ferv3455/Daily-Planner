@@ -145,7 +145,7 @@ void TrayIcon::showAbout()
     msgBox->setWindowIcon(QIcon(":/images/planner.png"));
     msgBox->setIcon(QMessageBox::Information);
     msgBox->setText(tr("<strong>Daily Planner - Arrange your life</strong>"));
-    msgBox->setInformativeText(tr("Version 0.0 (Original Version)<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
+    msgBox->setInformativeText(tr("Version ") + "1.0" + tr("<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
     msgBox->setStandardButtons(QMessageBox::Ok);
     msgBox->setModal(false);
     msgBox->open();

@@ -320,8 +320,13 @@ Have a rest.</source>
     </message>
     <message>
         <location filename="trayicon.cpp" line="148"/>
-        <source>Version 0.0 (Original Version)&lt;br/&gt;Developed by &lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;</source>
-        <translation>版本 0.0 （初始版本）&lt;br/&gt;由&lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;开发</translation>
+        <source>Version </source>
+        <translation>版本 </translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="148"/>
+        <source>&lt;br/&gt;Developed by &lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;</source>
+        <translation>&lt;br/&gt;由&lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;开发</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="158"/>
