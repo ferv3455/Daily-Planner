@@ -80,11 +80,11 @@ void TrayIcon::alarmMessage(const QTime &time)
     showMessage(tr("Alarm Clock"), time.toString());
 }
 
-void TrayIcon::changeState(ScheduleTimer::state s)
+void TrayIcon::changeState(ScheduleTimer::state s, int taskID, int num)
 {
     if (s == ScheduleTimer::TASK)
     {
-        showMessage(tr("Task Begins"), tr("Rest is over.\nReturn to work."));
+        showMessage(tr("Task Begins"), tr("Rest is over.\nPeriod number %1/%2.").arg(taskID).arg(num));
         setIcon(QIcon(":/images/task.png"));
         setToolTip(tr("Daily Planner") + "\n" +
                    tr("Current state: ") + tr("TASK") + "\n" +
@@ -118,8 +118,8 @@ void TrayIcon::showMainWindow()
             m_window = nullptr;
             m_timer->loadSchedule();
         });
-//        m_window->show();
-        m_window->showMaximized();
+        m_window->show();
+//        m_window->showMaximized();
         m_window->activateWindow();
         m_window->setFocus();
     }
@@ -145,7 +145,7 @@ void TrayIcon::showAbout()
     msgBox->setWindowIcon(QIcon(":/images/planner.png"));
     msgBox->setIcon(QMessageBox::Information);
     msgBox->setText(tr("<strong>Daily Planner - Arrange your life</strong>"));
-    msgBox->setInformativeText(tr("Version ") + "1.0" + tr("<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
+    msgBox->setInformativeText(tr("Version ") + "1.1 (Lite)" + tr("<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
     msgBox->setStandardButtons(QMessageBox::Ok);
     msgBox->setModal(false);
     msgBox->open();

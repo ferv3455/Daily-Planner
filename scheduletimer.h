@@ -41,7 +41,7 @@ private:
 
 signals:
     void alarmClock(const QTime &);
-    void stateChanged(state);
+    void stateChanged(state, int = 0, int = 0);
 
 public slots:
     void updateTick();

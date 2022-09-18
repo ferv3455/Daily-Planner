@@ -1,6 +1,5 @@
 #include "scheduletimer.h"
 
-#include <calendar.h>
 #include <QDebug>
 
 ScheduleTimer::ScheduleTimer(Settings *settings, QObject *parent) :
@@ -27,21 +26,6 @@ ScheduleTimer::~ScheduleTimer()
 
 void ScheduleTimer::loadSchedule()
 {
-    Calendar calendar;
-    calendar.load();
-    int id = calendar.indexOf(QDate::currentDate());
-    if (id >= 0)
-    {
-        m_alarms = calendar.record(id).m_alarms;
-        m_currentAlarm = std::lower_bound(m_alarms.begin(), m_alarms.end(),
-                                          QTime::currentTime()) - m_alarms.begin();
-        if (m_currentAlarm >= m_alarms.size())
-        {
-            m_currentAlarm = -1;
-            m_alarms.clear();
-        }
-    }
-
     m_endTime = QTime(0, 0, 0);
     m_currentTask = 0;
     m_schedule.load();
@@ -103,7 +87,7 @@ void ScheduleTimer::updateTick()
             {
                 m_endTime = beginTime[m_currentTask];
             }
-            emit stateChanged(s);
+            emit stateChanged(s, m_currentTask + 1, m_schedule.size());
         }
         else
         {
@@ -112,7 +96,7 @@ void ScheduleTimer::updateTick()
             emit stateChanged(OVER);
             if (m_settings->shutdown())
             {
-                system("shutdown /s /t 300");
+                system("shutdown /s /t 600");
             }
         }
     }

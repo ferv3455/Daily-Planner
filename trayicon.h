@@ -34,7 +34,7 @@ signals:
 public slots:
     // Inter-widget communication
     void alarmMessage(const QTime &time);
-    void changeState(ScheduleTimer::state);
+    void changeState(ScheduleTimer::state s, int taskID = 0, int num = 0);
 
     // Basic functions
     void showMainWindow();

@@ -9,203 +9,170 @@
         <translation>日常规划工具</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="38"/>
         <source>Calendar</source>
-        <translation>日历</translation>
+        <translation type="vanished">日历</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="298"/>
         <source>Daily Schedule</source>
-        <translation>每日安排</translation>
+        <translation type="vanished">每日安排</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="377"/>
+        <location filename="mainwindow.ui" line="110"/>
         <source>&amp;Delete</source>
         <translation>删除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="394"/>
+        <location filename="mainwindow.ui" line="127"/>
         <source>Edit Task Index:</source>
         <translation>修改任务编号:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="197"/>
-        <location filename="mainwindow.ui" line="444"/>
-        <location filename="mainwindow.ui" line="483"/>
+        <location filename="mainwindow.ui" line="177"/>
+        <location filename="mainwindow.ui" line="216"/>
         <source>HH:mm:ss</source>
         <translation>HH:mm:ss</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="53"/>
         <source>&lt;&lt; &amp;PREV</source>
-        <translation>&lt;&lt; 前翻(&amp;P)</translation>
+        <translation type="vanished">&lt;&lt; 前翻(&amp;P)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="73"/>
         <source>&amp;NEXT &gt;&gt;</source>
-        <translation>后翻(&amp;N) &gt;&gt;</translation>
+        <translation type="vanished">后翻(&amp;N) &gt;&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="109"/>
         <source>Edit Memo</source>
-        <translation>编辑备忘录</translation>
+        <translation type="vanished">编辑备忘录</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="134"/>
         <source>Clear Records</source>
-        <translation>清除记录</translation>
+        <translation type="vanished">清除记录</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="154"/>
         <source>Keep
 and
 Clear</source>
-        <translation>保留
+        <translation type="vanished">保留
 并清除
 其他</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="170"/>
         <source>Edit Alarms</source>
-        <translation>编辑闹钟</translation>
+        <translation type="vanished">编辑闹钟</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="183"/>
-        <location filename="mainwindow.ui" line="235"/>
         <source>Delete</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="204"/>
-        <location filename="mainwindow.ui" line="257"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="vanished">添加</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="218"/>
         <source>Edit Remarks</source>
-        <translation>编辑备注</translation>
+        <translation type="vanished">编辑备注</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="224"/>
         <source>Down</source>
-        <translation>下移</translation>
+        <translation type="vanished">下移</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="246"/>
         <source>Up</source>
-        <translation>上移</translation>
+        <translation type="vanished">上移</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="451"/>
+        <location filename="mainwindow.ui" line="184"/>
         <source>End:</source>
         <translation>结束时间:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="458"/>
+        <location filename="mainwindow.ui" line="191"/>
         <source>Add Task:</source>
         <translation>添加任务:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="497"/>
+        <location filename="mainwindow.ui" line="230"/>
         <source>Begin:</source>
         <translation>开始时间:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="504"/>
+        <location filename="mainwindow.ui" line="237"/>
         <source>&amp;Add</source>
         <translation>添加(&amp;A)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="567"/>
+        <location filename="mainwindow.ui" line="299"/>
         <source>&amp;Save</source>
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="574"/>
+        <location filename="mainwindow.ui" line="306"/>
         <source>&amp;Quit</source>
         <translation>退出(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="98"/>
-        <location filename="mainwindow.cpp" line="106"/>
-        <location filename="mainwindow.cpp" line="113"/>
-        <location filename="mainwindow.cpp" line="120"/>
-        <location filename="mainwindow.cpp" line="128"/>
-        <location filename="mainwindow.cpp" line="136"/>
-        <location filename="mainwindow.cpp" line="146"/>
-        <location filename="mainwindow.cpp" line="159"/>
-        <location filename="mainwindow.cpp" line="165"/>
+        <location filename="mainwindow.cpp" line="27"/>
+        <location filename="mainwindow.cpp" line="33"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="98"/>
-        <location filename="mainwindow.cpp" line="128"/>
         <source>Addition failed! Check your input.</source>
-        <translation>添加失败！检查输入是否正确。</translation>
+        <translation type="vanished">添加失败！检查输入是否正确。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="106"/>
-        <location filename="mainwindow.cpp" line="136"/>
         <source>Deletion failed! Check your input.</source>
-        <translation>删除失败！检查输入是否正确。</translation>
+        <translation type="vanished">删除失败！检查输入是否正确。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="113"/>
-        <location filename="mainwindow.cpp" line="120"/>
         <source>Move failed! Check the index.</source>
-        <translation>移动失败！检查编号是否正确。</translation>
+        <translation type="vanished">移动失败！检查编号是否正确。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="144"/>
         <source>Cleared Successfully</source>
-        <translation>成功清除记录</translation>
+        <translation type="vanished">成功清除记录</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="144"/>
         <source>Records out of the given range have been cleared!</source>
-        <translation>给定范围以外的记录均已被清除!</translation>
+        <translation type="vanished">给定范围以外的记录均已被清除!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="146"/>
         <source>Clearance failed! Check the dates.</source>
-        <translation>清除失败！请检查输入日期。</translation>
+        <translation type="vanished">清除失败！请检查输入日期。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="159"/>
+        <location filename="mainwindow.cpp" line="27"/>
         <source>Index out of range!</source>
         <translation>输入的编号超出范围!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="165"/>
+        <location filename="mainwindow.cpp" line="33"/>
         <source>Time not valid!</source>
         <translation>输入时间不正确!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="175"/>
+        <location filename="mainwindow.cpp" line="41"/>
         <source>Saved Successfully</source>
         <translation>保存成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="175"/>
+        <location filename="mainwindow.cpp" line="41"/>
         <source>The calendar and the daily schedule have been saved!</source>
         <translation>日历与每日安排保存成功!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="187"/>
+        <location filename="mainwindow.cpp" line="53"/>
         <source>Quit MainWindow</source>
         <translation>退出主窗口</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="188"/>
+        <location filename="mainwindow.cpp" line="54"/>
         <source>Are you sure necessary changes have been saved before quitting?</source>
         <translation>所有的修改是否已经保存?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="241"/>
         <source>(Today)</source>
-        <translation>(今天)</translation>
+        <translation type="vanished">(今天)</translation>
     </message>
 </context>
 <context>
@@ -254,11 +221,17 @@ Clear</source>
         <translation>任务开始</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="87"/>
         <source>Rest is over.
 Return to work.</source>
-        <translation>休息结束。
+        <translation type="vanished">休息结束。
 请继续完成任务。</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="87"/>
+        <source>Rest is over.
+Period number %1/%2.</source>
+        <translation>休息结束。
+当前任务编号%1/%2。</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="90"/>
