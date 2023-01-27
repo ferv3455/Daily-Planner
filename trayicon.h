@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "settings.h"
 #include "scheduletimer.h"
+#include "locker.h"
 
 #include <QSystemTrayIcon>
 #include <QApplication>
@@ -19,6 +20,7 @@ public:
 private:
     // Qt window items
     MainWindow *m_window;
+    Locker *m_locker;
 
     // Data
     Settings *m_settings;
@@ -35,6 +37,8 @@ public slots:
     // Inter-widget communication
     void alarmMessage(const QTime &time);
     void changeState(ScheduleTimer::state s, int taskID = 0, int num = 0);
+    void warnLocker();
+    void lockerState(bool state);
 
     // Basic functions
     void showMainWindow();

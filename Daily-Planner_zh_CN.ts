@@ -178,45 +178,45 @@ Clear</source>
 <context>
     <name>TrayIcon</name>
     <message>
-        <location filename="trayicon.cpp" line="35"/>
+        <location filename="trayicon.cpp" line="39"/>
         <source>Show MainWindow</source>
         <translation>打开主界面</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="39"/>
+        <location filename="trayicon.cpp" line="43"/>
         <source>Screen Lock</source>
         <translation>屏幕锁定</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="44"/>
+        <location filename="trayicon.cpp" line="47"/>
         <source>Auto Shutdown</source>
         <translation>定时关机</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="48"/>
+        <location filename="trayicon.cpp" line="51"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="52"/>
+        <location filename="trayicon.cpp" line="55"/>
         <source>Quit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="57"/>
-        <location filename="trayicon.cpp" line="89"/>
-        <location filename="trayicon.cpp" line="97"/>
-        <location filename="trayicon.cpp" line="105"/>
+        <location filename="trayicon.cpp" line="60"/>
+        <location filename="trayicon.cpp" line="98"/>
+        <location filename="trayicon.cpp" line="106"/>
+        <location filename="trayicon.cpp" line="114"/>
         <source>Daily Planner</source>
         <translation>日常规划工具</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="80"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Alarm Clock</source>
         <translation>闹钟提醒</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="87"/>
+        <location filename="trayicon.cpp" line="96"/>
         <source>Task Begins</source>
         <translation>任务开始</translation>
     </message>
@@ -227,87 +227,133 @@ Return to work.</source>
 请继续完成任务。</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="87"/>
+        <location filename="trayicon.cpp" line="96"/>
         <source>Rest is over.
 Period number %1/%2.</source>
         <translation>休息结束。
 当前任务编号%1/%2。</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="90"/>
-        <location filename="trayicon.cpp" line="98"/>
-        <location filename="trayicon.cpp" line="106"/>
+        <location filename="trayicon.cpp" line="99"/>
+        <location filename="trayicon.cpp" line="107"/>
+        <location filename="trayicon.cpp" line="115"/>
         <source>Current state: </source>
         <translation>当前状态: </translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="90"/>
+        <location filename="trayicon.cpp" line="99"/>
         <source>TASK</source>
         <translation>任务中</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="91"/>
-        <location filename="trayicon.cpp" line="99"/>
+        <location filename="trayicon.cpp" line="100"/>
+        <location filename="trayicon.cpp" line="108"/>
         <source>End time: </source>
         <translation>结束时间: </translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="95"/>
-        <location filename="trayicon.cpp" line="103"/>
+        <location filename="trayicon.cpp" line="104"/>
+        <location filename="trayicon.cpp" line="112"/>
         <source>Task Ends</source>
         <translation>任务结束</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="95"/>
+        <location filename="trayicon.cpp" line="104"/>
         <source>This period is over.
 Have a rest.</source>
         <translation>当前任务时间段结束。
 请稍作休息。</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="98"/>
+        <location filename="trayicon.cpp" line="107"/>
         <source>REST</source>
         <translation>休息中</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="103"/>
+        <location filename="trayicon.cpp" line="112"/>
         <source>Today&apos;s work is over.
 Have a rest.</source>
         <translation>今天的全部任务结束。
 请休息。</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="106"/>
+        <location filename="trayicon.cpp" line="115"/>
         <source>ALL TASKS OVER</source>
         <translation>所有任务结束</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="144"/>
+        <location filename="trayicon.cpp" line="121"/>
+        <source>Locker warning</source>
+        <translation>屏幕锁定提示</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="121"/>
+        <source>Unknown application detected. Please shut it down as soon as possible.</source>
+        <translation>您已打开其他应用。请尽快将其关闭。</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <location filename="trayicon.cpp" line="162"/>
+        <source>Locker begins</source>
+        <translation>屏幕锁定启动</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <source>Locker begins. Please get to work.</source>
+        <translation>屏幕锁定开始。请开始工作。</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="132"/>
+        <source>Locker ends</source>
+        <translation>屏幕锁定关闭</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="132"/>
+        <source>Locker ends. Please have a rest.</source>
+        <translation>屏幕锁定关闭。请稍作休息。</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="163"/>
+        <source>Enter locking time (minutes):</source>
+        <translation>请输入屏幕锁定时间（分钟）：</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="168"/>
+        <source>Warning</source>
+        <translation>提示</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="168"/>
+        <source>Locker already running!</source>
+        <translation>屏幕锁定程序已在运行中！</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="182"/>
         <source>About Daily Planner</source>
         <translation>关于日常规划工具</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="147"/>
+        <location filename="trayicon.cpp" line="185"/>
         <source>&lt;strong&gt;Daily Planner - Arrange your life&lt;/strong&gt;</source>
         <translation>&lt;strong&gt;日常规划工具——规划你的生活&lt;/strong&gt;</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="148"/>
+        <location filename="trayicon.cpp" line="186"/>
         <source>Version </source>
         <translation>版本 </translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="148"/>
+        <location filename="trayicon.cpp" line="186"/>
         <source>&lt;br/&gt;Developed by &lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;</source>
         <translation>&lt;br/&gt;由&lt;a href=&apos;https://github.com/ferv3455&apos;&gt;ferv3455&lt;/a&gt;开发</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="158"/>
+        <location filename="trayicon.cpp" line="196"/>
         <source>Exit Daily Planner</source>
         <translation>退出日常规划工具</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="161"/>
+        <location filename="trayicon.cpp" line="199"/>
         <source>&lt;strong&gt;Are you sure you want to quit?&lt;/strong&gt;</source>
         <translation>&lt;strong&gt;确定要退出吗？&lt;/strong&gt;</translation>
     </message>

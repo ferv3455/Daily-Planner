@@ -1,6 +1,7 @@
 #include "trayicon.h"
 
 #include <QMessageBox>
+#include <QInputDialog>
 
 TrayIcon::TrayIcon(QObject *parent) :
     QSystemTrayIcon(parent),
@@ -17,6 +18,9 @@ TrayIcon::TrayIcon(QObject *parent) :
     // Initializing schedule timer
     m_timer = new ScheduleTimer(m_settings, this);
     m_timer->loadSchedule();
+
+    // Initializing locker
+    m_locker = new Locker(this);
 
     // Creating the menu
     m_menu = new QMenu;
@@ -39,7 +43,6 @@ TrayIcon::TrayIcon(QObject *parent) :
     m_options[1].setText(tr("Screen Lock"));
     m_options[1].setIcon(QIcon(":/images/lock.png"));
     connect(&m_options[1], &QAction::triggered, this, &TrayIcon::fullscreen);
-    m_options[1].setEnabled(false);
 
     m_options[2].setText(tr("Auto Shutdown"));
     m_options[2].setIcon(m_settings->shutdown() ? QIcon(":/images/on.png") : QIcon(":/images/off.png"));
@@ -59,6 +62,8 @@ TrayIcon::TrayIcon(QObject *parent) :
     // Connect Signals and Slots
     connect(m_timer, &ScheduleTimer::alarmClock, this, &TrayIcon::alarmMessage);
     connect(m_timer, &ScheduleTimer::stateChanged, this, &TrayIcon::changeState);
+    connect(m_locker, &Locker::warning, this, &TrayIcon::warnLocker);
+    connect(m_locker, &Locker::timeout, this, &TrayIcon::lockerState);
     connect(this, &TrayIcon::activated, this, &TrayIcon::onActivated);
 }
 
@@ -72,6 +77,10 @@ TrayIcon::~TrayIcon()
     if (m_window != nullptr)
     {
         delete m_window;
+    }
+    if (m_locker != nullptr)
+    {
+        delete m_locker;
     }
 }
 
@@ -107,6 +116,23 @@ void TrayIcon::changeState(ScheduleTimer::state s, int taskID, int num)
     }
 }
 
+void TrayIcon::warnLocker()
+{
+    showMessage(tr("Locker warning"), tr("Unknown application detected. Please shut it down as soon as possible."));
+}
+
+void TrayIcon::lockerState(bool state)
+{
+    if (state)
+    {
+        showMessage(tr("Locker begins"), tr("Locker begins. Please get to work."));
+    }
+    else
+    {
+        showMessage(tr("Locker ends"), tr("Locker ends. Please have a rest."));
+    }
+}
+
 void TrayIcon::showMainWindow()
 {
     if (m_window == nullptr)
@@ -128,7 +154,19 @@ void TrayIcon::showMainWindow()
 void TrayIcon::fullscreen()
 {
     // TODO: REDEFINED
+    if (m_locker->idle())
+    {
+        m_locker->updateWindows();
 
+        bool ok;
+        int minutes = QInputDialog::getInt(nullptr, tr("Locker begins"),
+                                           tr("Enter locking time (minutes):"), 40, 0, 120, 1, &ok);
+        m_locker->lock(minutes);
+    }
+    else
+    {
+        QMessageBox::warning(nullptr, tr("Warning"), tr("Locker already running!"));
+    }
 }
 
 void TrayIcon::changeShutdown()
@@ -145,7 +183,7 @@ void TrayIcon::showAbout()
     msgBox->setWindowIcon(QIcon(":/images/planner.png"));
     msgBox->setIcon(QMessageBox::Information);
     msgBox->setText(tr("<strong>Daily Planner - Arrange your life</strong>"));
-    msgBox->setInformativeText(tr("Version ") + "1.1 (Lite)" + tr("<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
+    msgBox->setInformativeText(tr("Version ") + "1.2 (Lite)" + tr("<br/>Developed by <a href='https://github.com/ferv3455'>ferv3455</a>"));
     msgBox->setStandardButtons(QMessageBox::Ok);
     msgBox->setModal(false);
     msgBox->open();

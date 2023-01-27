@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    locker.cpp \
     main.cpp \
     mainwindow.cpp \
     schedule.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     trayicon.cpp
 
 HEADERS += \
+    locker.h \
     mainwindow.h \
     schedule.h \
     scheduletimer.h \
@@ -30,6 +32,9 @@ TRANSLATIONS += \
     Daily-Planner_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
+
+LIBS += \
+    -lPsapi
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
