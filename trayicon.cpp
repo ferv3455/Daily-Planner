@@ -2,6 +2,7 @@
 
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QtMultimedia/QMediaPlayer>
 
 TrayIcon::TrayIcon(QObject *parent) :
     QSystemTrayIcon(parent),
@@ -98,6 +99,10 @@ void TrayIcon::changeState(ScheduleTimer::state s, int taskID, int num)
         setToolTip(tr("Daily Planner") + "\n" +
                    tr("Current state: ") + tr("TASK") + "\n" +
                    tr("End time: ") + m_timer->endTime());
+        QMediaPlayer *player = new QMediaPlayer;
+        player->setMedia(QUrl::fromLocalFile("./sounds/percussion.mp3"));
+        player->setVolume(80);
+        player->play();
     }
     else if (s == ScheduleTimer::REST)
     {
@@ -106,6 +111,10 @@ void TrayIcon::changeState(ScheduleTimer::state s, int taskID, int num)
         setToolTip(tr("Daily Planner") + "\n" +
                    tr("Current state: ") + tr("REST") + "\n" +
                    tr("End time: ") + m_timer->endTime());
+        QMediaPlayer *player = new QMediaPlayer;
+        player->setMedia(QUrl::fromLocalFile("./sounds/percussion.mp3"));
+        player->setVolume(80);
+        player->play();
     }
     else if (s == ScheduleTimer::OVER)
     {
@@ -113,6 +122,10 @@ void TrayIcon::changeState(ScheduleTimer::state s, int taskID, int num)
         setIcon(QIcon(":/images/rest.png"));
         setToolTip(tr("Daily Planner") + "\n" +
                    tr("Current state: ") + tr("ALL TASKS OVER") + "\n");
+        QMediaPlayer *player = new QMediaPlayer;
+        player->setMedia(QUrl::fromLocalFile("./sounds/percussion.mp3"));
+        player->setVolume(80);
+        player->play();
     }
 }
 

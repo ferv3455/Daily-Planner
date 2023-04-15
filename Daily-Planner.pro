@@ -1,4 +1,6 @@
-QT       += core gui
+QT       += \
+    core gui \
+    multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -32,6 +34,7 @@ TRANSLATIONS += \
     Daily-Planner_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
+
 
 LIBS += \
     -lPsapi
